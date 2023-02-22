@@ -1,23 +1,23 @@
 <?php
 
-if (isset($_COOKIE['frenchCookies'])) { //-- You cannot access the index when the cookie is active 
+session_start(); 
+$_SESSION["langue"] = "fr";
+
+
+if(isset($_POST['delete']))
+{
+    session_destroy();
     echo "
-        <p>
-            Vous avez été automatiquement redirigé.
-        </p>
+        <p>Session suprimée, vous pouvez retourner sur le menu index.</p>
     ";
 }
-
-$fiveMinutesTime = time() + 60 * 5;
-
-setcookie( "frenchCookies", "fr", $fiveMinutesTime); //-- Cookies will exist for 5minutes
 
 ?>
 
 <head>
   <meta charset="utf-8">
-  <title>COOKIES - Fr</title>
-  <link rel="shortcut icon" href="images/cookieImg.png" type="image/x-icon">
+  <title>SESSION - Fr</title>
+  <link rel="shortcut icon" href="images/cadena.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,6 +31,10 @@ setcookie( "frenchCookies", "fr", $fiveMinutesTime); //-- Cookies will exist for
         <a href="index.php">
             > index <
         </a>
+
+        <form method='post'> 
+            <button name='delete' value='delete'>Delete session</button>
+        </form>
     </body>
 
 </html>

@@ -8,16 +8,29 @@ Si il y a deja un cookie enregistré, alors on est automatiquement redirigé ver
 
 <?php
 
-if (isset($_COOKIE['germanCookies'])) {
-    header('Location: deu.php');
+session_start(); 
+
+if(isset($_POST['delete']))
+{
+    session_destroy();
 }
 
-if (isset($_COOKIE['englishCookies'])) {
-    header('Location: en.php');
-}
+if(isset($_SESSION["langue"]))
+{
+    if($_SESSION["langue"] == "fr")
+    {
+        header('Location: fr.php');
+    }
 
-if (isset($_COOKIE['frenchCookies'])) {
-    header('Location: fr.php');
+    if($_SESSION["langue"] == "en")
+    {
+        header('Location: en.php');
+    }
+
+    if($_SESSION["langue"] == "deu")
+    {
+        header('Location: deu.php');
+    }
 }
 
 ?>
@@ -26,8 +39,8 @@ if (isset($_COOKIE['frenchCookies'])) {
 
 <head>
   <meta charset="utf-8">
-  <title>COOKIES</title>
-  <link rel="shortcut icon" href="images/cookieImg.png" type="image/x-icon">
+  <title>SESSION</title>
+  <link rel="shortcut icon" href="images/cadena.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 
