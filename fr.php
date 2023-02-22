@@ -25,7 +25,7 @@ if(isset($_POST['delete']))
 
     <body>
         <p>
-            Je suis la page française.
+            Je suis la page française!
         </p>
 
         <a href="index.php">
